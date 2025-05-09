@@ -1,0 +1,142 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Background */
+  body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: url('bg.png') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    animation: blurInBg 0.5s ease-in-out forwards; /* Animation for the background */
+  }
+  
+  /* Profile Card */
+  .profile-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #3f177496;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    width: 400px;
+    backdrop-filter: blur(10px);
+    animation: blurIn 0.5s ease-in-out forwards; /* Animation for the card */
+  }
+  
+  /* Profile Pic */
+  .pfp {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #e100ff;
+  }
+  
+  /* Username & Tagline */
+  .username {
+    font-family: 'poppins', sans-serif;
+    font-size: 2em;
+    color: #e100ff;
+  }
+  
+  .tagline {
+    font-size: 0.95em;
+    color: #c8b6ff;
+  }
+  
+  .status {
+    font-size: 1em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #ff7eb9;
+  }
+
+  
+  .status .tooltip {
+    position: absolute;
+    bottom: 95%; /* closer to status */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* start slightly lower */
+    background-color: #222;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 0.75em;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.5s ease;
+    filter: blur(2px); /* start blurred */
+  }
+  
+  .status:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* slide into place */
+    filter: blur(0px);
+  }
+  
+  
+  /* Social Icons */
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    font-size: 1.5em;
+    margin-bottom: -20px;
+    margin-top: 30px;
+  }
+  
+  .socials a {
+    color: #ab00b1;
+    transition: all 0.6s ease;
+  }
+  
+  .socials a:hover {
+    color: #e785ff;
+    transform: scale(1.15);
+  }
+  
+  /* Views */
+  .views {
+    font-size: 0.85em;
+    color: #c8b6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  @keyframes blurIn {
+    0% {
+      filter: blur(10px);
+      opacity: 0;
+    }
+    100% {
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  @keyframes blurInBg {
+    0% {
+      filter: blur(2px);
+    }
+    100% {
+      filter: blur(0px);
+    }
+  }
+  .pfp:hover {
+    transform: scale(1.08);
+
+  }
+  .pfp{
+    transition: all 0.7s ease;
+  }
