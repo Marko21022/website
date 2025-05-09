@@ -1,0 +1,49 @@
+.directory-container {
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+  }
+  
+  .directory-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    color: #0066ff;
+    margin-bottom: 40px;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    justify-items: center;
+  }
+  
+  .profile-card-small {
+    background: #1d3871d8;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(8px);
+    width: 200px;
+  }
+  
+  .profile-card-small:hover {
+    transform: translateY(-5px);
+  }
+  
+  .profile-card-small img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #d88eff;
+  }
+  body{
+    background: url('https://marko21022.com/image.png') no-repeat center center fixed;
+  }
+  * {
+    font-family: 'Poppins', sans-serif;
+  }
