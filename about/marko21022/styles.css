@@ -132,3 +132,10 @@
       filter: blur(0px);
     }
   }
+  .pfp:hover {
+    transform: scale(1.08);
+
+  }
+  .pfp{
+    transition: all 0.7s ease;
+  }
