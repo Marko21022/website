@@ -1,0 +1,7 @@
+
+Popup For the site https://marko21022.com
+<div class="popup" id="popup">
+    <span class="close-btn" id="closePopup">x</span> <!-- Close Button -->
+    <h2 id="popupTitle">Update!</h2> <!-- Title -->
+    <p>New Update! Added a navigation bar.</p>
+</div>

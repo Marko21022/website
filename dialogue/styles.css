@@ -1,0 +1,232 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #1d1d1d;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 600px;
+    background: #303030;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 0px solid #636363;
+    background-color: #727272;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    color: #cfcfcf;
+    font-weight: bold;
+    font-size: 17px;
+  }
+  
+  input[type="text"]:focus {
+    border: 1px solid #007BFF;
+    box-shadow: 0 0 4px rgba(0,123,255,0.5);
+  }
+  #nameInput::placeholder {
+    color: #cfcfcf;
+    font-weight: bold;
+    text-align: center;
+  }
+  #nameInput {
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px 16px;
+    background: #838383;
+    color: #d6d6d6;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+  }
+  button:active {
+    transform: scale(0.95);
+    background-color: #818181;
+    filter: blur(1px);
+  }
+  button:hover {
+    background: #797979;
+  }
+  
+  .dialogue {
+    background: #5f5f5f;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    position: relative;
+    text-align: left;
+  }
+  
+  .copy-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #2b2d31;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .copy-btn:active {
+    transform: scale(0.95);
+    background-color: #1e1f22;
+  }
+  
+  #toast {
+    position: fixed;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2b2d31ab;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    z-index: 1000;
+    filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+  
+  #toast.show {
+    bottom: 40px;
+    opacity: 1;
+    filter: blur(0);
+  }
+select {
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.2s, box-shadow 0.2s;
+  font-size: 16px;
+  background-color: #797979;
+  color: #cfcfcf;
+  font-weight: bold;
+}
+  
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .header img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+  .generate{
+    transition: all 0.2s ease-in-out;
+  }
+  .generate:hover {
+    transform: translateY(-2px);
+  }
+  .generate:active {
+    transform: scale(0.95);
+    background-color: #363636;
+    filter: blur(1px);
+  }
+
+
+  #loginScreen {
+    position: fixed;
+    inset: 0;
+    background: #18181896;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(25px);
+  }
+  
+  .login-box {
+    background: #383838;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content inside the box */
+  }
+  
+  .login-box input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #5c5c5c;
+    color: #e0e0e0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .login-box input[type="password"]:focus {
+    background-color: #686868;
+  }
+  
+  .login-box button {
+    padding: 10px 20px;
+    background: #2b2d31;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+    width: 100%; /* Ensure the button stretches across */
+  }
+  
+  .login-box button:hover {
+    background-color: #1e1f22;
+  }
+  
+  .login-box button:active {
+    transform: scale(0.95);
+    filter: blur(1px);
+  }
+  
+  #loginError {
+    color: red;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  
+  #rankSelect {
+    text-align: center;
+  }
