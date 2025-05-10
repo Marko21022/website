@@ -15,21 +15,23 @@
     animation: blurInBg 0.5s ease-in-out forwards; /* Animation for the background */
   }
   
-  /* Profile Card */
   .profile-card {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: #29429696;
-    padding: 40px;
+    padding: 40px 20px; /* 20px horizontal padding */
     border-radius: 20px;
     text-align: center;
     color: white;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     backdrop-filter: blur(10px);
-    animation: blurIn 0.5s ease-in-out forwards; /* Animation for the card */
+    animation: blurIn 0.5s ease-in-out forwards;
+    box-sizing: border-box;
   }
+  
   
   /* Profile Pic */
   .pfp {
