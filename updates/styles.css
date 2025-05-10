@@ -1,0 +1,137 @@
+/* Reset and base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: url('https://marko21022.com/image.png') no-repeat center center fixed;
+    background-size: cover;
+    padding: 20px;
+    overflow-x: hidden;
+    animation: blurInBg 0.5s ease-in-out forwards;
+  }
+  
+  /* Container */
+  .updates-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    backdrop-filter: blur(12px);
+    background: rgba(29, 66, 150, 0.4);
+    border-radius: 20px;
+    animation: blurIn 0.8s ease-in-out;
+  }
+  
+  /* Title */
+  .updates-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #7c90ff;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .updates-title i {
+    margin-right: 10px;
+  }
+  
+  /* Update card */
+  .update-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-left: 4px solid #7c90ff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    animation: blurIn 0.6s ease-in-out;
+  }
+  
+  .update-card:hover {
+    background: rgba(191, 179, 255, 0.1);
+    transform: translateY(-5px);
+  }
+  
+  .update-card h2 {
+    color: #d2dcff;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  .update-card h2 i {
+    margin-right: 8px;
+  }
+  
+  .update-card p {
+    color: #e0e9ff;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .update-card .date {
+    font-size: 0.85rem;
+    color: #9daeff;
+  }
+  .date i {
+    margin-right: 6px;
+  }
+  
+  /* Animations */
+  @keyframes blurIn {
+    0% {
+      filter: blur(8px);
+      opacity: 0;
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes blurInBg {
+    0% {
+      filter: blur(4px);
+    }
+    100% {
+      filter: blur(0px);
+    }
+  }
+  .glass-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    margin-top: 20px;
+    background: rgba(44, 68, 140, 0.35);
+    color: #b3ccff;
+    border: 1px solid rgba(124, 144, 255, 0.5);
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px rgba(124, 144, 255, 0.15);
+    transition: all 0.3s ease;
+    align-self: flex-end; /* Align to the right side of the card */
+  }
+  
+  .glass-button:hover {
+    background: rgba(124, 144, 255, 0.15);
+    color: #d8e5ff;
+    transform: scale(1.05);
+    box-shadow: 0 0 16px rgba(124, 144, 255, 0.3);
+  }
+  
+  .glass-button i {
+    font-size: 1rem;
+  }
+  
+  /* Ensure the content of the card is aligned to the left, except the button */
+  .update-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align all content to the left */
+    text-align: left;
+    padding-right: 20px; /* Ensure there's padding on the right so the content doesn't touch the edges */
+  }
+  

@@ -1,0 +1,125 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: url('https://marko21022.com/image.png') no-repeat center center fixed;
+    background-size: cover;
+    padding: 20px;
+    overflow-x: hidden;
+    animation: blurInBg 0.5s ease-in-out forwards;
+  }
+  
+  /* Container */
+  .details-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    backdrop-filter: blur(14px);
+    background: rgba(29, 66, 150, 0.4);
+    border-radius: 20px;
+    animation: blurIn 0.8s ease-in-out;
+  }
+  
+  /* Title */
+  .details-title {
+    text-align: center;
+    font-size: 2.3rem;
+    color: #7c90ff;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+  }
+  .details-title i {
+    margin-right: 10px;
+  }
+  
+  /* Date */
+  .date {
+    text-align: center;
+    color: #a3b8ff;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Sections */
+  .section {
+    margin-bottom: 30px;
+  }
+  .section h2 {
+    font-size: 1.3rem;
+    color: #d2dcff;
+    margin-bottom: 10px;
+  }
+  .section h2 i {
+    margin-right: 8px;
+  }
+  .section p {
+    color: #e0e9ff;
+    font-size: 1rem;
+  }
+  .section ul {
+    padding-left: 20px;
+  }
+  .section li {
+    color: #e0e9ff;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .section li i {
+    margin-right: 6px;
+    color: #7c90ff;
+  }
+  
+  /* Back Link */
+  .back-link {
+    text-align: center;
+    margin-top: 40px;
+  }
+  .back-link a {
+    text-decoration: none;
+    color: #b3ccff;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  .back-link a i {
+    margin-right: 6px;
+  }
+  .back-link a:hover {
+    color: #d8e5ff;
+  }
+  
+  /* Animations */
+  @keyframes blurIn {
+    0% {
+      filter: blur(8px);
+      opacity: 0;
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  @keyframes blurInBg {
+    0% {
+      filter: blur(4px);
+    }
+    100% {
+      filter: blur(0px);
+    }
+  }
+  .details-container a{
+    text-decoration: none;
+    color: #7c90ff;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  .details-container a:hover{
+    text-decoration: none;
+    color: #a3b8ff;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
