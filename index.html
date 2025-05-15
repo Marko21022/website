@@ -1,310 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="https://i.ibb.co/jZQDMLct/logo-1.png"> <!-- Replace with your actual favicon URL -->
-    <script src="script.js"></script>
-
-    <!-- Open Graph Meta Tags for Discord Embed -->
-<meta property="og:title" content="My Portfolio">
-<meta property="og:description" content="Welcome to my portfolio, here you can find a bunch of info about my work and me also :D">
-<meta property="og:image" content="https://i.ibb.co/jZQDMLct/logo-1.png"> <!-- Replace with your actual image URL -->
-<meta property="og:url" content="https://marko21022.github.io">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marko's Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/f071d8f5c4.js" crossorigin="anonymous"></script>
+  <meta property="og:title" content="Marko21022">
+<meta property="og:description" content="Welcome, here you can find a lot about me and my work.">
+<meta property="og:image" content="https://marko21022.com/banner.png"> 
+<meta property="og:url" content="https://marko21022.com">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#3498db"> <!-- Sets the embed color -->
-
+<meta name="theme-color" content="#2b2d31"> 
 </head>
 <body>
+  <header class="nav">
+    <div class="container">
+      <a href="#hero"><img src="https://marko21022.com/logo.png" class="logo"></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about"><i class="fas fa-book"></i> About</a></li>
+          <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
+          <li><a href="#portfolio"><i class="fas fa-check"></i> Portfolio</a></li>
+          <li><a href="#testimonials"><i class="fas fa-list"></i> Testimonials</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="blur-overlay"></div>
+
+
+    <section id="hero" class="hero">
+      <div class="container">
+        <h2>Hi, I am <span></span></h2>
+
+        <a href="#portfolio" class="btn primary">View My Work</a>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2><i class="fas fa-book"></i> About Me</h2>
+        <p>Hello, I am Marko. I am a 14-year-old professional Digital and Website Designer. I have a passion for creating visually appealing and user-friendly designs. My journey in design started a few years ago, and I have been honing my skills ever since. I am always eager to learn new techniques and take on challenging projects.</p>
+      </div>
+    </section>
+    <main>
+    <section id="skills" class="section dark">
+      <div class="container">
+        <h2><i class="fas fa-tools"></i> Skills</h2>
+        <ul class="skills-grid">
+          <li><i class="fab fa-js"></i> JavaScript</li>
+          <li><i class="fab fa-css"></i> HTML / CSS / Web Design</li>
+          <li><i class="fab fa-python"></i> Python / Pygame</li>
+          <li><i class="fas fa-pen"></i> Adobe Photoshop</li>
+          <li><i class="fab fa-figma"></i> Figma</li>
+        </ul>
+      </div>
+    </section>
+    <main>
+    <section id="portfolio" class="section">
+      <div class="container">
+        <h2><i class="fas fa-check"></i> Portfolio</h2>
+        <div class="portfolio-grid">
+          <div class="card"><a href="https://discord.gg/wsrpf">Washington State Roleplay</a></div>
+          <div class="card"><a href="https://federateerlc.com/">Federate</a> Designer Website</div>
+          <div class="card"><a href="#about">This site!</a></div>
+        </div>
+      </div>
+    </section>
     
-    <header>
-        <nav class="navbar">
-            <a href="#" class="logo">Marko21022</a>
-            <ul class="nav-links">
-                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#services"><i class="fas fa-cogs"></i> Projects</a></li>
-                <li><a href="#testimonials"><i class="fas fa-home"></i> Testimonials</a></li>
-                <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
-            </ul>
-            
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <script src="https://kit.fontawesome.com/f071d8f5c4.js" crossorigin="anonymous"></script>
-        </nav>
-    </header>
-    <style>
-        /* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;  /* Dark background */
-    color: #ddd;  
-    height: 100vh;
-}
-
-/* Navbar Styling */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(28, 28, 28, 0.8);
-    padding: 15px 30px;
-    border-radius: 25px;
-    margin: 20px auto;
-    max-width: 90%;
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-    transition: top 0.5s ease-in-out;
-}
-
-/* Animate Navbar appearing */
-.navbar.show {
-    top: 20px;
-}
-
-/* Logo */
-.logo {
-    color: #fff;
-    font-size: 1.8rem;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-/* Navbar Links */
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin-left: 20px; /* Pushes the links to the right */
-}
-
-.nav-links li {
-    font-size: 1rem;
-    
-}
-
-.nav-links li a {
-    color: #bbb;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 15px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    position: relative;
-}
-
-/* Hover Animation */
-.nav-links li a:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-/* Icons */
-.nav-links li a i {
-    font-size: 1.2rem;
-}
-
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    z-index: 999;
-    margin-left: 60px; /* Aligns hamburger to the right */
-}
-
-.hamburger .bar {
-    width: 30px;
-    height: 4px;
-    background-color: #fff;
-    border-radius: 5px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Hamburger Open Animation */
-.hamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Mobile Menu */
-@media (max-width: 768px) {
-    .nav-links {
-        position: absolute;
-        top: 80px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 400px;
-        background: rgba(28, 28, 28, 0.9);
-        height: 0;
-        overflow: hidden;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        border-radius: 10px;
-        opacity: 0;
-        transition: height 0.4s ease, opacity 0.4s ease;
-    }
-
-    .nav-links.active {
-        opacity: 1;
-        height: auto;
-        margin-top: 15px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-links li a {
-        font-size: 1.2rem;
-        padding: 12px 20px;
-        text-align: center;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .nav-links li a:hover {
-        background: rgba(255, 255, 255, 0.2);
-    }
-    html {
-    scroll-behavior: smooth;
-}
-
-
-}
-
-    </style>
-    <script>
-        // Get elements
-const navbar = document.querySelector('.navbar');
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-// Navbar Slide-In Animation on Scroll
-document.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('show');
-    } else {
-        navbar.classList.remove('show');
-    }
-});
-
-// Hamburger Menu Toggle
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
-    </script>
-    <!-- Header -->
-    <header>
-        <h1>s</h1>
-    </header>
-    
-    <!-- About Section -->
-    <section class="about" id="about">
-        <h2>About Me</h2>
-        <p class="about-text">Hello, I am Marko. I am a 14-year-old professional Digital and Website Designer. I have a passion for creating visually appealing and user-friendly designs. My journey in design started a few years ago, and I have been honing my skills ever since. I am always eager to learn new techniques and take on challenging projects.</p>
+    <section id="testimonials" class="section dark">
+      <div class="container">
+        <h2><i class="fas fa-list"></i> Testimonials</h2>
+        <div class="testimonial-carousel">
+          <blockquote>"The attention to detail is amazing!"</blockquote>
+          <blockquote>"Great to work with."</blockquote>
+          <blockquote>"Helped me make my site."</blockquote>
+          <blockquote>"Overall a nice person!"</blockquote>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Skills Section -->
-    <section class="skills">
-        <h2>Skills & Technologies</h2>
-        <div class="skill">Photoshop</div>
-        <div class="skill">HTML & CSS</div>
-        <div class="skill">Node.js</div>
-        <div class="skill">Figma</div>
-        <div class="skill">ER:LC Server Management</div>
-    </section>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Marko. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="services">
-        <h2>My Projects</h2>
-        <div class="project">
-            <h3>Washington State Roleplay</h3>
-            <p>I worked for the biggest <a class="special-a" href="https://www.roblox.com/games/2534724415/Emergency-Response-Liberty-County" target="_blank">ER:LC</a> Washington State Server as a Deputy Founder, but retired not long ago. </p>
-        </div>
-        <div class="project">
-            <h3>Federate</h3>
-            <p>I helped a popular ER:LC server called <a class="special-a" href="https://www.federateerlc.com" target="_blank">Federate</a> make a website that helps their designers a bunch. They search up a Roblox username and all the account info they need pops up.</p>
-        </div>
-        <div class="project">
-            <h3>WSRP Utilities</h3>
-            <p>I worked on a Discord Bot for <a class="special-a" href="https://discord.gg/wsrpf" target="_blank">WSRP</a> that helps with Discord and ER:LC management.</p>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <h2>Testimonials</h2>
-        <div class="testimonial">
-            <p>"Helped me develop <a href="https://tgman.xyz" target="_blank">my site!</a>"</p>
-            <p>- Tasg</p>
-        </div>
-        <div class="testimonial">
-            <p>"Absolutely fantastic experience working with Marko! His attention to detail is incredible."</p>
-            <p>- Darren</p>
-        </div>
-        <div class="testimonial">
-            <p>"Marko helped me on a ton of projects! Trully the best out there."</p>
-            <p>- Nik</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <h2>Contact Me</h2>
-        <p>If you want to collaborate or just say hi, feel free to reach out!</p>
-        <a href="mailto:marko@marko21022.com">Email Me</a>
-        <a href="https://discord.com/users/1143806923754438777">Discord</a>
-        <a href="https://www.instagram.com/marko.stojanovic21/">Instagram</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Marko's Portfolio. All rights reserved.</p>
-    </footer>
-<!-- Popup -->
-
-<!-- Link to the external JS file -->
-
-
+  <script src="script.js"></script>
 </body>
 </html>
