@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>NutriTrack</title>
+        <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+
+          <div class="app">
+              <!-- Main Content -->
+                  <div id="mealTracker" class="view">
+                        <header>
+                                <h1>NutriTrack 🍽️</h1>
+                                        <p>Track your meals and calories!</p>
+                                              </header>
+
+                                                    <!-- Calendar Picker -->
+                                                          <div id="calendarWrapper">
+                                                                  <input type="date" id="calendar" />
+                                                                        </div>
+
+                                                                              <!-- Date Navigation -->
+                                                                                    <div class="date-nav">
+                                                                                            <button id="prevDay">⬅️ Previous</button>
+                                                                                                    <span id="currentDate"></span>
+                                                                                                            <button id="nextDay">Next ➡️</button>
+                                                                                                                  </div>
+
+                                                                                                                        <!-- Calorie Tracker -->
+                                                                                                                              <div id="calorieTracker">
+                                                                                                                                      <div class="calorie-bar-bg">
+                                                                                                                                                <div id="calorieBar" class="calorie-bar-fill"></div>
+                                                                                                                                                        </div>
+                                                                                                                                                                <p id="calorieSummary">0 / 2000 kcal</p>
+                                                                                                                                                                      </div>
+
+                                                                                                                                                                            <!-- Add Meal Form -->
+                                                                                                                                                                                  <div class="add-meal">
+                                                                                                                                                                                          <input type="text" id="mealName" placeholder="Meal Name 🍔">
+                                                                                                                                                                                                  <input type="number" id="mealCalories" placeholder="Calories">
+                                                                                                                                                                                                          <select id="mealType">
+                                                                                                                                                                                                                    <option value="Breakfast">🥞 Breakfast</option>
+                                                                                                                                                                                                                              <option value="Lunch">🍕 Lunch</option>
+                                                                                                                                                                                                                                        <option value="Dinner">🍝 Dinner</option>
+                                                                                                                                                                                                                                                </select>
+                                                                                                                                                                                                                                                        <input type="file" id="mealImage" accept="image/*">
+                                                                                                                                                                                                                                                                <button id="addMealBtn">Add Meal 🍽️</button>
+                                                                                                                                                                                                                                                                      </div>
+
+                                                                                                                                                                                                                                                                            <!-- Meal List -->
+                                                                                                                                                                                                                                                                                  <div id="mealList"></div>
+                                                                                                                                                                                                                                                                                      </div>
+
+                                                                                                                                                                                                                                                                                          <!-- BMI Tracker -->
+                                                                                                                                                                                                                                                                                              <div id="bmiTracker" class="view">
+                                                                                                                                                                                                                                                                                                    <header>
+                                                                                                                                                                                                                                                                                                            <h1>BMI Tracker 🏋️</h1>
+                                                                                                                                                                                                                                                                                                                    <p>Track your BMI and health status.</p>
+                                                                                                                                                                                                                                                                                                                          </header>
+
+                                                                                                                                                                                                                                                                                                                                <!-- BMI Form -->
+                                                                                                                                                                                                                                                                                                                                      <div class="bmi-section">
+                                                                                                                                                                                                                                                                                                                                              <input type="number" id="height" placeholder="Height (cm)">
+                                                                                                                                                                                                                                                                                                                                                      <input type="number" id="weight" placeholder="Weight (kg)">
+                                                                                                                                                                                                                                                                                                                                                              <button id="calcBmiBtn">Calculate BMI 🏋️</button>
+                                                                                                                                                                                                                                                                                                                                                                      <p id="bmiResult"></p>
+                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                </div>
+
+                                                                                                                                                                                                                                                                                                                                                                                    <!-- Bottom Navigation Bar -->
+                                                                                                                                                                                                                                                                                                                                                                                        <div class="bottom-nav">
+                                                                                                                                                                                                                                                                                                                                                                                              <button id="mealNavBtn" class="nav-btn">🍽️ Meals</button>
+                                                                                                                                                                                                                                                                                                                                                                                                    <button id="bmiNavBtn" class="nav-btn">🏋️ BMI</button>
+                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                          </div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                              <script src="script.js"></script>
+
+                                                                                                                                                                                                                                                                                                                                                                                                              </body>
+                                                                                                                                                                                                                                                                                                                                                                                                              </html>
