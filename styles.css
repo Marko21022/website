@@ -139,13 +139,14 @@
   }
   
   .btn.primary {
-    background: var(--accent);
+    background: #90cdff5b;
     color: #fff;
-    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
   }
   
   .btn.primary:hover {
-    background: #4385ff;
+    background: #4385ff67;
+    transform: translatey(-2px);
   }
   
   /* === SECTIONS === */
@@ -209,6 +210,7 @@
     padding: 2rem;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    backdrop-filter: blur(10px);
   }
   
   .card:hover {
