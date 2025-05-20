@@ -59,32 +59,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .not-found-popup h3 {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .not-found-popup h3::before {
-            content: '\f071'; /* fa-exclamation-triangle */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            font-size: 16px;
-            color: #fff;
-            background: #8a1e1e;
-            border: 2px solid #fa6060;
-            border-radius: 8px;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
         .not-found-popup .description {
             font-size: 14px;
@@ -139,4 +113,12 @@
         }
         p {
             color: rgba(255, 255, 255, 0.521);
+        }
+        .not-found-popup h2 {
+            font-size: 20px;
+            color: #ffffffb9;
+            transition: all 0.3s ease;
+        }
+        .not-found-popup h2:hover {
+            color: #ffffff;
         }
