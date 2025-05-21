@@ -1,45 +1,10 @@
 body {
-    background-color: rgb(63, 63, 63);
+    background-color: rgb(56, 56, 56);
     color: white;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0;
-    align-items: center;
-    text-align: center
+    font-family: poppins, sans-serif;
+}
 
-};
 h1 {
-    color: rgb(255, 255, 255);
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-h2 {
-    color: rgb(255, 255, 255);
-    font-size: 1.5em;
-    margin-bottom: 15px;
-}  
-h3 {
-    color: rgb(255, 255, 255);
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-p {
-    color: rgb(255, 255, 255);
-    margin-bottom: 15px;
-}
-.alertButton {
-    background-color: rgb(250, 81, 81);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-.alertButton:hover {
-    background-color: rgb(200, 0, 0);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
 }
