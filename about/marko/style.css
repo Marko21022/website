@@ -1,0 +1,1033 @@
+.loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            object-fit: cover;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        #background-fallback {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            object-fit: cover;
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            #background-video, #background-fallback {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+
+        .card-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 1;
+    min-width: 0;
+    max-width: 90%;
+    opacity: 0;
+    transition: all 1s ease-in-out; /* Increased to 1s */
+}
+
+.card-container.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.tilt-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Existing .card styles remain unchanged */
+.card {
+    width: 600px;
+    height: 200px;
+    background: rgba(26, 26, 26, 0.5);
+    backdrop-filter: blur(20px); /* Reduced from 10px to 6px */
+    -webkit-backdrop-filter: blur(20px); /* Reduced from 10px to 6px */
+    border-radius: 25px;
+    border: 1.5px solid rgba(73, 73, 73, 0.9);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    padding-left: 20px;
+    position: relative;
+    transition: background 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+}
+
+        .profile-group {
+            display: flex;
+            align-items: center;
+            margin-top: -60px;
+            transform: scale(0);
+            opacity: 0;
+        }
+        
+        .profile-group.visible {
+            transform: scale(1);
+            opacity: 1;
+            transition: all 0.6s ease-in-out; /* Increased to 0.6s */
+        }
+        
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 0;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-left: -10px;
+        }
+        
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin-left: 0;
+        }
+        
+        .username {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .verified-check {
+            margin-left: 6px;
+            font-size: 0.6em;
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+            vertical-align: middle;
+            line-height: 1;
+            position: relative;
+            top: 2px;
+        }
+        
+        .description {
+    color: rgba(220, 220, 220, 0.9);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    margin-left: 10px;
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 150px;
+    position: relative;
+    min-height: 1.2em; /* Ensures consistent height even when empty */
+    line-height: 1.2em; /* Matches font-size for consistent spacing */
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: rgba(220, 220, 220, 0.9);
+    border-radius: 100px;
+    vertical-align: middle;
+    margin-left: 2px;
+    opacity: 1; /* Default state: visible */
+}
+
+.description.blinking .typing-cursor {
+    animation: blink 1s infinite; /* Only applied during the waiting period */
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+        
+        .inner-card {
+            position: relative;
+            width: 280px;
+            height: 80px;
+            background: rgba(39, 39, 39, 0.4);
+            border-radius: 25px;
+            border: 2px solid rgba(73, 73, 73, 0.9);
+            margin-left: 20px;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-top: -60px;
+            overflow: hidden;
+            z-index: 1;
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        .inner-card.visible {
+            transform: scale(1);
+            opacity: 1;
+            transition: all 0.4s ease-out;
+        }
+
+        .inner-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('reywallpaper.mp4') no-repeat center/cover;
+    filter: blur(12px); /* Reduced from 20px to 12px */
+    -webkit-filter: blur(12px); /* Reduced from 20px to 12px */
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: inherit;
+}
+
+        .inner-card-bottom {
+    position: relative;
+    width: 200px;
+    height: 50px;
+    background: rgba(39, 39, 39, 0.4);
+    border-radius: 25px;
+    border: 2px solid rgba(73, 73, 73, 0.9);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.4s ease-in-out; /* Increased to 0.4s */
+}
+
+        .inner-card-bottom.visible {
+            transform: translateX(-50%) scale(1);
+            opacity: 1;
+            transition: all 0.2s ease-in-out; /* Changed to ease-in-out */
+        }
+
+        .inner-card-bottom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('reywallpaper.mp4') no-repeat center/cover;
+    filter: blur(12px); /* Reduced from 20px to 12px */
+    -webkit-filter: blur(12px); /* Reduced from 20px to 12px */
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: inherit;
+}
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-block;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                        0 0 20px rgba(255, 255, 255, 0.6),
+                        0 0 30px rgba(255, 255, 255, 0.4);
+            transition: opacity 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            opacity: 0.8;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 1),
+                        0 0 25px rgba(255, 255, 255, 0.8),
+                        0 0 35px rgba(255, 255, 255, 0.6);
+            transform: scale(1.2);
+        }
+
+        .discord-widget {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .discord-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 30%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .discord-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .discord-name {
+            font-size: 1em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .discord-stats {
+            display: flex;
+            align-items: center;
+            font-size: 0.7em;
+            color: rgba(220, 220, 220, 0.9);
+            margin-bottom: 5px;
+            white-space: nowrap;
+        }
+
+        .discord-stats span {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .discord-stats .online-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #43b581;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .join-button {
+            background-color: #43b581;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8em;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .join-button:hover {
+            background-color: #369f6a;
+            scale: 1.05;
+        }
+
+        .start-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 1000;
+    padding: 20px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.start-overlay.hidden {
+    opacity: 0;
+}
+
+.terminal-output {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    color: #ffffff;
+    line-height: 1.5;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.terminal-line {
+    display: none; /* Hidden by default, shown via JavaScript */
+}
+
+.terminal-line.visible {
+    display: block;
+}
+
+.memory-diagnostic {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.memory-squares {
+    display: flex;
+    gap: 2px;
+}
+
+.memory-square {
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    opacity: 0;
+    transition: opacity 0.05s ease-in-out;
+}
+
+.memory-square.visible {
+    opacity: 1;
+}
+
+.system-ready {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.system-ready.visible {
+    opacity: 1;
+}
+
+        #background-video,
+#background-audio {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Increased to 0.5s */
+}
+
+#background-video.visible,
+#background-audio.visible {
+    opacity: 1;
+}
+
+        .mute-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                        0 0 20px rgba(255, 255, 255, 0.6),
+                        0 0 30px rgba(255, 255, 255, 0.4);
+        }
+
+        .mute-button:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 1),
+                        0 0 25px rgba(255, 255, 255, 0.8),
+                        0 0 35px rgba(255, 255, 255, 0.6);
+        }
+
+        .mute-button.muted {
+            color: #ff4444;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.8),
+                        0 0 20px rgba(255, 68, 68, 0.6),
+                        0 0 30px rgba(255, 68, 68, 0.4);
+        }
+
+        .mute-button.muted:hover {
+            text-shadow: 0 0 15px rgba(255, 68, 68, 1),
+                        0 0 25px rgba(255, 68, 68, 0.8),
+                        0 0 35px rgba(255, 68, 68, 0.6);
+        }
+
+        .mute-button.visible {
+            opacity: 1;
+        }
+
+        .theme-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.6),
+                0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 1),
+                0 0 25px rgba(255, 255, 255, 0.8),
+                0 0 35px rgba(255, 255, 255, 0.6);
+}
+
+.theme-toggle-button.light {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+                0 0 20px rgba(255, 215, 0, 0.6),
+                0 0 30px rgba(255, 215, 0, 0.4);
+}
+
+.theme-toggle-button.light:hover {
+    text-shadow: 0 0 15px rgba(255, 215, 0, 1),
+                0 0 25px rgba(255, 215, 0, 0.8),
+                0 0 35px rgba(255, 215, 0, 0.6);
+}
+
+.theme-toggle-button.visible {
+    opacity: 1;
+}
+
+/* Light mode styles */
+.card.light-mode {
+    background: rgba(255, 255, 255, 0.04); /* Reduced from 0.3 to 0.15 for more transparency */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.inner-card.light-mode {
+    background: rgba(200, 200, 200, 0.2); /* Unchanged */
+    border: 2px solid rgba(150, 150, 150, 0.7);
+}
+
+.inner-card-bottom.light-mode {
+    background: rgba(200, 200, 200, 0.2); /* Unchanged */
+    border: 2px solid rgba(150, 150, 150, 0.7);
+}
+
+.music-player-card.light-mode {
+    background: rgba(255, 255, 255, 0.04); /* Reduced from 0.3 to 0.15 for more transparency */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.description.light-mode {
+    color: rgba(180, 180, 180, 0.9);
+}
+
+.discord-stats.light-mode {
+    color: rgba(180, 180, 180, 0.9);
+}
+
+.music-progress.light-mode {
+    color: rgba(180, 180, 180, 0.9);
+}
+
+/* Smooth transition for theme change */
+.card, .inner-card, .inner-card-bottom, .music-player-card {
+    transition: background 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+}
+.username.light-mode {
+    color:rgba(39, 39, 39, 0.658);
+}
+/* Existing .music-player-card styles, with minor adjustment */
+.music-player-card {
+    position: relative;
+    width: 610px;
+    height: 80px;
+    background: rgba(26, 26, 26, 0.5);
+    backdrop-filter: blur(20px); /* Reduced from 10px to 6px */
+    -webkit-backdrop-filter: blur(20px); /* Reduced from 10px to 6px */
+    border-radius: 25px;
+    border: 1.5px solid rgba(73, 73, 73, 0.9);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-top: 5px;
+    transform: scale(0);
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.8s ease-in-out, background 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+}
+
+.music-player-card.visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.music-player-widget {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.music-album-art {
+    width: 75px;
+    height: 75px;
+    border-radius: 30%;
+    margin-right: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    flex: 1;
+}
+
+.music-title {
+    font-size: 1em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-align: left;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 10px;
+}
+
+.music-progress {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 0.7em;
+    color: rgba(220, 220, 220, 0.9);
+    margin-bottom: 5px;
+}
+
+.current-time,
+.total-time {
+    margin: 0 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-filled {
+    width: 0;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+.music-controls {
+    display: flex;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.control-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.6),
+                0 0 30px rgba(255, 255, 255, 0.4);
+}
+
+.control-button:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 1),
+                0 0 25px rgba(255, 255, 255, 0.8),
+                0 0 35px rgba(255, 255, 255, 0.6);
+}
+
+
+        @media screen and (max-width: 768px) {
+            .card {
+        width: 450px;
+        height: 180px;
+    }
+
+            .profile-group {
+                margin-top: -55px;
+            }
+
+            .profile-pic {
+                width: 70px;
+                height: 70px;
+            }
+
+            .username {
+                font-size: 1.3em;
+                margin-left: 8px;
+            }
+
+            .verified-check {
+                font-size: 0.5em;
+                margin-left: 5px;
+                vertical-align: middle;
+                top: 1px;
+            }
+
+            .description {
+    font-size: 0.8em;
+    margin-left: 8px;
+    width: 120px;
+    min-height: 0.96em; /* 0.8em * 1.2 */
+    line-height: 0.96em;
+}
+
+.typing-cursor {
+    height: 0.8em; /* Matches font-size */
+}
+
+            .inner-card {
+                width: 240px;
+                height: 60px;
+                margin-left: 15px;
+                margin-top: -55px;
+            }
+
+            .discord-icon {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+
+            .discord-name {
+                font-size: 0.9em;
+            }
+
+            .discord-stats {
+                font-size: 0.6em;
+            }
+
+            .join-button {
+                font-size: 0.7em;
+                padding: 2px 8px;
+            }
+
+            .inner-card-bottom {
+                width: 180px;
+                height: 45px;
+            }
+
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+            }
+
+            .mute-button {
+                top: 15px;
+                left: 15px;
+                font-size: 20px;
+            }
+
+            .music-player-card {
+        width: 450px;
+        height: 60px;
+        margin-top: 5px;
+    }
+
+    .music-album-art {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .music-title {
+        font-size: 0.9em;
+        margin-left: 10px;
+    }
+
+    .music-progress {
+        font-size: 0.6em;
+    }
+
+    .current-time,
+    .total-time {
+        margin: 0 10px;
+    }
+
+    .music-controls {
+        margin-left: 10px;
+    }
+
+    .control-button {
+        font-size: 14px;
+    }
+
+    .terminal-output {
+    font-size: 0.9em;
+}
+
+.system-ready {
+    font-size: 2em;
+}
+
+}
+
+        
+
+        @media screen and (max-width: 480px) {
+            .card {
+        width: 95vw;
+        max-width: 320px;
+        height: 120px;
+        padding: 8px;
+        padding-left: 15px;
+    }
+
+            .profile-group {
+                margin-top: -45px;
+            }
+
+            .profile-pic {
+                width: 40px;
+                height: 40px;
+                margin-left: -6px;
+            }
+
+            .username {
+                font-size: 1em;
+                margin-left: 6px;
+            }
+
+            .verified-check {
+                font-size: 0.6em;
+                margin-left: 4px;
+                vertical-align: middle;
+                top: 1px;
+            }
+
+            .description {
+    font-size: 0.6em;
+    margin-left: 6px;
+    margin-top: 2px;
+    width: 90px;
+    min-height: 0.72em; /* 0.6em * 1.2 */
+    line-height: 0.72em;
+}
+
+.typing-cursor {
+    height: 0.6em; /* Matches font-size */
+}
+
+            .inner-card {
+                width: 150px;
+                height: 45px;
+                margin-left: 10px;
+                padding: 6px;
+                margin-top: -45px;
+                border-radius: 15px;
+            }
+
+            .discord-icon {
+                width: 40px;
+                height: 40px;
+                margin-right: 8px;
+                border-radius: 20%;
+            }
+
+            .discord-name {
+                font-size: 0.6em;
+                margin-bottom: 2px;
+            }
+
+            .discord-stats {
+                font-size: 0.35em;
+                margin-bottom: 2px;
+            }
+
+            .discord-stats .online-dot {
+                width: 5px;
+                height: 5px;
+                margin-right: 3px;
+            }
+
+            .discord-stats span {
+                margin-right: 8px;
+            }
+
+            .join-button {
+                font-size: 0.45em;
+                padding: 1px 5px;
+            }
+
+            .inner-card-bottom {
+                width: 130px;
+                height: 35px;
+                bottom: 10px;
+                border-radius: 20px;
+                gap: 10px;
+            }
+
+            .social-icon {
+                width: 25px;
+                height: 25px;
+                font-size: 16px;
+                line-height: 25px;
+            }
+
+            .mute-button {
+                top: 10px;
+                left: 10px;
+                font-size: 18px;
+            }
+            .music-player-card {
+        width: 95vw;
+        max-width: 330px;
+        height: 50px;
+        margin-top: 3px;
+        border-radius: 15px;
+        padding: 6px;
+    }
+
+    .music-album-art {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+    }
+
+    .music-title {
+        font-size: 0.6em;
+        margin-bottom: 2px;
+        margin-left: 5px;
+    }
+
+    .music-progress {
+        font-size: 0.5em;
+    }
+
+    .current-time,
+    .total-time {
+        margin: 0 5px;
+    }
+
+    .music-controls {
+        margin-left: 5px;
+    }
+
+    .control-button {
+        font-size: 12px;
+    }
+
+    .start-overlay {
+    padding: 10px;
+}
+
+.terminal-output {
+    font-size: 0.8em;
+}
+
+.system-ready {
+    font-size: 1.5em;
+}
+
+}
+.hover-popup {
+  position: relative;
+  cursor: pointer;
+  color: #00bfff;
+  text-decoration: underline dotted;
+}
+
+.hover-popup::after {
+  content: attr(data-popup);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(40, 40, 40, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 999;
+}
+
+.hover-popup:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+.discord-stats span {
+  color: #b0b0b0;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.discord-stats .online-count {
+  color: #43b581; /* Discord green */
+}

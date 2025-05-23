@@ -1,10 +1,446 @@
-body {
-    background-color: rgb(56, 56, 56);
-    color: white;
-    font-family: poppins, sans-serif;
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1 {
-    position: relative;
-    text-align: center;
+body {
+  background: #0e0f10;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+  line-height: 1.6;
 }
+
+/* Header */
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(14px);
+    background: rgba(15, 15, 15, 0.596);
+    padding: 16px 32px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+}
+@media (max-width: 600px) {
+    header {
+        width: 90vw;
+        padding: 16px 20px;
+        bottom: 0px;
+        top: auto;
+        width: 100%;
+        border-radius: 0;
+        height: 100px;
+        background: rgb(66, 66, 66);
+        border: none;
+        align-items: center;
+        justify-content: center;
+
+    }
+    header .logo {
+        display: none;
+    }
+    .team-member {
+        margin-bottom: 60px;
+    }
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00d1ff;
+  letter-spacing: 1px;
+}
+
+nav a {
+  margin-left: 28px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 120px;
+  text-align: center;
+  padding: 80px 20px 60px;
+  animation: fadeIn 0.5s ease;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.hero p {
+  color: #aaa;
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Cards Section */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 36px;
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 0.5s ease;
+}
+
+.card {
+  background: #1a1c1f;
+  border-radius: 16px;
+  overflow: hidden;
+  padding-bottom: 20px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.3s;
+  will-change: transform;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card:hover {
+  box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 18px 0 10px;
+  font-size: 1.3rem;
+  color: #00d1ff;
+}
+
+.card p {
+  color: #ccc;
+  font-size: 1rem;
+  padding: 0 16px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 50px 0;
+  color: #666;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Page Content Wrapper */
+.page-content {
+  padding: 160px 40px 80px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Additional Sections */
+.about, .services, .cta {
+  padding: 100px 24px;
+  text-align: center;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.about h2, .services h2, .cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #00d1ff;
+  font-weight: 600;
+}
+
+.about p, .services p, .cta p {
+  color: #aaa;
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+/* Services Card Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.service-card {
+  background: #1a1c1f;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.3);
+}
+
+.service-card h3 {
+  color: #00d1ff;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Our Team Section */
+.our-team h1 {
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+.our-team .hdr,
+.our-team .abt {
+  text-align: center;
+}
+
+.our-team .abt {
+  margin-bottom: 50px;
+}
+
+.team-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 36px;
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.team-member {
+  position: relative; /* Ensure bg stays behind the content */
+  background: #00000065;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: center;
+  padding: 24px 16px;
+  transition: all 0.4s ease, box-shadow 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 0;
+  cursor: pointer;
+}
+
+.team-member .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* stays behind content */
+  opacity: .5; /* adjust as needed */
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-4px);
+  border: 1px solid #00d1ff;
+}
+
+.team-member .pfp {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  border: 3px solid #00d1ff;
+}
+
+.team-member h4 {
+  color: #00d1ff;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.team-member p {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.team-member {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Profile modal */
+.profile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.profile-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.profile-modal .pfp {
+  transform: rotate(40deg);
+  transition: all 0.3s ease;
+}
+
+.profile-modal:active .pfp {
+  transform: rotate(0deg);
+}
+
+.profile-content {
+  background: #1a1c1f;
+  border-radius: 16px;
+  padding-top: 180px; /* increased to push text below the bigger pfp */
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 32px;
+  width: 420px; /* bigger modal width */
+  max-width: 90vw;
+  text-align: center;
+  position: relative;
+  color: #ccc;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.profile-modal.active .profile-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.profile-content img#modalPfp {
+  position: absolute;
+  top: 60px; /* same */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px; /* slightly bigger */
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid #00d1ff;
+  object-fit: cover;
+  margin-bottom: 12px;
+  z-index: 1;
+}
+
+.profile-content .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.profile-content .close-btn:hover {
+  color: #00d1ff;
+}
+
+
+.profile-content h2 {
+  color: #00d1ff;
+  margin-bottom: 6px;
+  font-size: 1.5rem;
+}
+
+.profile-content .role {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #aaa;
+}
+
+.profile-content .bio {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+.modal-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* increased height */
+  overflow: hidden;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  z-index: 0;
+}
+
+.modal-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-content h2,
+.profile-content .role,
+.profile-content .bio {
+  position: relative; /* make sure z-index applies */
+  z-index: 2; /* higher than pfp */
+  margin-top: 12px; /* spacing from profile pic */
+}
+
+/* Specifically push the first header down more */
+.profile-content h2 {
+  margin-top: 20px;
+}
+a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+a:hover {
+    color: #00d1ff;
+}
+
+@keyframes fadeIn {
+  from {
+
+    filter: blur(10px);
+  }
+  to {
+    filter: blur(0);
+  }
+}
+

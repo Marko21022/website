@@ -1,76 +1,106 @@
-// Grab the button element by its ID
-const button = document.getElementById("alertButton");
-const input = document.getElementById("inputField");
-const error = document.getElementById("errorMessage");
+const tiltCards = document.querySelectorAll('.card.tilt');
 
-// Add a click event listener
-button.addEventListener("click", function () {
-    alert("You clicked the button!");
-    button.innerText = "Clicked!";
+tiltCards.forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const cardWidth = rect.width;
+    const cardHeight = rect.height;
+    const centerX = rect.left + cardWidth / 2;
+    const centerY = rect.top + cardHeight / 2;
 
-    setTimeout(() => {
-        button.innerText = "Done!";
-    }, 2000); // changes to "Done!" after 2 seconds
+    const mouseX = e.clientX - centerX;
+    const mouseY = e.clientY - centerY;
 
-    setTimeout(() => {
-        button.innerText = "Click or hover me!";
-    }, 2000); // changes to "Done!" after 2 seconds
+    const maxRotate = 8; // a bit more intense tilt
+
+    // Inverted rotation (flip signs)
+    const rotateX = (mouseY / (cardHeight / 2)) * maxRotate; 
+    const rotateY = (-mouseX / (cardWidth / 2)) * maxRotate;
+
+    card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+  });
 });
-
-button.addEventListener("mouseover", function () {
-    button.style.backgroundColor = "lightblue";
-    button.style.color = "green";
-    button.innerText = "Hovered!"
-
-    setTimeout(() => {
-        button.innerText = "Click or hover me!";
-    }, 2000); // changes to "Done!" after 2 seconds
+new FinisherHeader({
+  "count": 12,
+  "size": {
+    "min": 1300,
+    "max": 1500,
+    "pulse": 0
+  },
+  "speed": {
+    "x": {
+      "min": 0.6,
+      "max": 2
+    },
+    "y": {
+      "min": 0.6,
+      "max": 6
+    }
+  },
+  "colors": {
+    "background": "#13002a",
+    "particles": [
+      "#060077",
+      "#1b2c6b",
+      "#330367",
+      "#303eaa"
+    ]
+  },
+  "blending": "lighten",
+  "opacity": {
+    "center": 0.6,
+    "edge": 0
+  },
+  "skew": -2,
+  "shapes": [
+    "c"
+  ]
 });
+const modal = document.getElementById('profileModal');
+  const closeBtn = modal.querySelector('.close-btn');
+  const modalPfp = modal.querySelector('.profile-pfp');
+  const modalName = modal.querySelector('.profile-name');
+  const modalRole = modal.querySelector('.profile-role');
+  const modalInfo = modal.querySelector('.profile-info');
 
-button.addEventListener("mouseout", function () {
-    button.style.backgroundColor = "white";
-    button.style.color = "black";
-});
+  const teamData = {
+    'Jane Doe': {
+      role: 'Creative Director',
+      pfp: 'https://marko21022.com/f1.png',
+      info: 'Jane leads our creative team with passion and precision.',
+    },
+    'John Smith': {
+      role: 'Developer',
+      pfp: 'https://marko21022.com/f1.png',
+      info: 'John writes clean, efficient code and loves open source.',
+    }
+  };
 
-input.addEventListener("input", () => {
-    const value = input.value;
+  document.querySelectorAll('.team-member').forEach(member => {
+    member.addEventListener('click', () => {
+      const name = member.querySelector('h3').textContent;
+      const data = teamData[name];
+      if (!data) return;
 
-    // Limit max characters
-    if (value.length > 10) {
-        input.value = value.slice(0, 10); // cut extra characters
-        return; // stop further validation since max is hit
-        style.color = "red";
-        error.style.fontWeight = "normal";
-    }
+      modalPfp.src = data.pfp;
+      modalName.textContent = name;
+      modalRole.textContent = data.role;
+      modalInfo.textContent = data.info;
 
-    // If empty
-    if (value.length === 0) {
-        error.innerText = "Input required (3–10 characters)";
-        error.style.color = "red";
-        error.style.fontWeight = "normal";
-    }
-    // If less than 3 characters
-    else if (value.length < 3) {
-        error.innerText = "Too short (min 3 characters)";
-        error.style.color = "red";
-        error.style.fontWeight = "normal";
-    }
-    // If valid
-    else {
-        error.innerText = "Awesome!";
-        error.style.color = "green";
-        error.style.fontWeight = "bold";
-    }
-});
+      modal.classList.remove('hidden');
+    });
+  });
 
-setInterval(() => {
-    if (window.outerWidth - window.innerWidth > 100 || window.outerHeight - window.innerHeight > 100) {
-        alert("DevTools open detected");
-    }
-}, 1000);
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
 
-document.addEventListener("keydown", function (e) {
-    if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
-        e.preventDefault();
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
     }
-});
+  });

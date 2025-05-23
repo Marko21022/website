@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team — Nova Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="logo">Nova</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="team.html" class="active">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="our-team" style="margin-top: 100px;">
+  <h1 class="hdr">Meet Our Team</h1>
+  <p class="abt">The people behind the scenes working on making things better</p>
+  <section class="team-cards">
+  <div class="team-member" data-name="Marko">
+    <img class="pfp" src="https://marko21022.com/f1.png" alt="Marko">
+    <img class="bg" src="https://marko21022.com/image.png" alt="">
+    <h3>Marko</h3>
+    <p>Creative Director</p>
+  </div>
+
+  <div class="team-member" data-name="Jane Doe">
+    <img class="pfp" src="https://marko21022.com/f2.png" alt="Jane Doe">
+    <img class="bg" src="https://marko21022.com/banner.png" alt="">
+    <h3>Jane Doe</h3>
+    <p>Moderator</p>
+  </div>
+
+  <div class="team-member" data-name="John Smith">
+    <img class="pfp" src="https://marko21022.com/f3.png" alt="John Smith">
+    <img class="bg" src="https://marko21022.com/image.png" alt="">
+    <h3>John Smith</h3>
+    <p>Developer</p>
+  </div>
+</section>
+
+<!-- Profile Modal -->
+<div class="profile-modal" id="profileModal">
+  <div class="profile-content">
+    <button class="close-btn" id="closeModal">&times;</button>
+     <div class="modal-banner">
+      <img id="modalBannerImg" src="https://marko21022.com/banner.png" alt="Banner">
+    </div>
+    <img id="modalPfp" src="" alt="Profile picture">
+    <h2 id="modalName"></h2>
+    <div class="role" id="modalRole"></div>
+    <div class="bio" id="modalInfo"></div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('profileModal');
+  const closeBtn = document.getElementById('closeModal');
+  const modalPfp = document.getElementById('modalPfp');
+  const modalName = document.getElementById('modalName');
+  const modalRole = document.getElementById('modalRole');
+  const modalInfo = document.getElementById('modalInfo');
+
+  const teamData = {
+  'Marko': {
+    role: 'Creative Director',
+    pfp: 'https://marko21022.com/f1.png',
+    banner: 'https://marko21022.com/banner.png',
+    info: 'Jane leads our creative team...'
+  },
+  'Jane Doe': {
+    role: 'Creative Director',
+    pfp: 'https://marko21022.com/f1.png',
+    banner: 'https://marko21022.com/banner.png',
+    info: 'Jane leads our creative team...'
+  },
+  'John Smith': {
+    role: 'Creative Director',
+    pfp: 'https://marko21022.com/f1.png',
+    banner: 'https://marko21022.com/banner.png',
+    info: 'Jane leads our creative team...'
+  }
+};
+
+
+  document.querySelectorAll('.team-member').forEach(member => {
+    member.addEventListener('click', () => {
+      const name = member.querySelector('h3').textContent;
+      const data = teamData[name];
+      if (!data) return;
+
+      modalPfp.src = data.pfp;
+      modalName.textContent = name;
+      modalRole.textContent = data.role;
+      modalInfo.textContent = data.info;
+      modal.classList.add('active');
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('active');
+  });
+</script>
+</body>
+</html>
